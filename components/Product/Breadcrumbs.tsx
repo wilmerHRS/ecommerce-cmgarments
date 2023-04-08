@@ -6,7 +6,7 @@ type BreadcrumbsProps = {
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
     return (
-        <div className="text-3xl">
+        <div className="text-sm">
             {items.map((item, index) => (
                 <span key={item.label}>
                     {item.href ? (
