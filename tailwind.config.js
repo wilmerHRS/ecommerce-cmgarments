@@ -1,4 +1,6 @@
+const {fontFamily} = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
@@ -18,6 +20,9 @@ module.exports = {
         maxWidth: {
           '1/87': '87%',
         }
+      },
+      fontFamily: {
+        poppins: [`var(--font-poppins)`, ...fontFamily.sans]
       }
     },
   },
