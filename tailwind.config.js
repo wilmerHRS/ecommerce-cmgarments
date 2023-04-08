@@ -10,7 +10,16 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        'custom-color-beige': '#f3f2ee',
+      },
+      extend: {
+        maxWidth: {
+          '1/87': '87%',
+        }
+      }
+    },
   },
   plugins: [],
 };
