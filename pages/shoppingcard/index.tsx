@@ -1,6 +1,6 @@
 import TitleShoppingCard from "@/components/ShoppingCard/TitleShoppingCards";
 import deleteCartItem from "@/utils/deleteCartItem";
-import GetCartImageItem from "@/components/LocalStorage/getCartImageItem";
+import GetCartImageItem from "@/components/LocalStorage/GetCartImageItem";
 import getCartItems from "@/utils/getCartItem";
 import { USER } from "@/constants/user";
 import { useRouter } from "next/router";
