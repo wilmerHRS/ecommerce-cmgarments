@@ -5,6 +5,7 @@ import getCartItems from "@/utils/getCartItem";
 import { USER } from "@/constants/user";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import MainLayout from "@/layouts/MainLayout";
 const ShoppingCard = () => {
     const [cartItems, setCartItems] = useState([]);
     const [total, setTotal] = useState(0);
@@ -37,11 +38,12 @@ const ShoppingCard = () => {
     }, [shouldUpdateTotal]);
 
     return (
-        <div key="shopping-card">
+        <MainLayout title='Carrito'>
+        <div key="shopping-card" className="font-poppins">
             <TitleShoppingCard />
             <div className="container max-w-screen-7xl mx-auto py-10">
-                <div className="flex flex-row justify-center items-center">
-                    <div className="w-full md:w-3/5 mx-2 flex justify-center items-center">
+                <div className="flex flex-row justify-between items-center">
+                    <div className="w-full md:w-3/4 mx-2 flex justify-center items-center">
                         {cartItems.length === 0 ? (
                             <div className="text-center">
                                 <h2 className="text-2xl font-bold mb-4">
@@ -169,6 +171,7 @@ const ShoppingCard = () => {
                 </div>
             </div>
         </div>
+    </MainLayout>
     );
 };
 export default ShoppingCard;

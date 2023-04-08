@@ -4,6 +4,7 @@ import { IImage } from "@/interfaces/image.interface";
 import {
     IGetProduct,
 } from "@/interfaces/product.interface";
+import MainLayout from "@/layouts/MainLayout";
 import { productService } from "@/services/product.service";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -40,10 +41,12 @@ const DetailProduct = () => {
     }
 
     return (
-        <div>
+        <MainLayout title='Carrito'>
+        <div className="font-poppins">
             <DetailProductImage images={image} />
             <ProductDetailsContent product={product} />
         </div>
+        </MainLayout>
     );
 };
 
