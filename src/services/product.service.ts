@@ -1,6 +1,6 @@
 import Api from "../config/Api";
-import { IImage } from "../models/image.interface";
-import { IGetProduct, IGetSizes, IProduct, IProductSizes } from "../models/product.interface";
+import { IImage } from "../interfaces/image.interface";
+import { IGetProduct, IGetSizes, IProduct, IProductSizes } from "../interfaces/product.interface";
 
 //? crear producto
 const create = async (body: IProduct): Promise<IProduct> => {

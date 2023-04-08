@@ -1,4 +1,4 @@
-import { IImage } from "@/src/models/image.interface";
+import { IImage } from "@/src/interfaces/image.interface";
 import { productService } from "@/src/services/product.service";
 import { useEffect, useState } from "react";
 
@@ -13,8 +13,8 @@ const getCartImageItem = ({ id }: ImageListProps) => {
         title: "DEFAULT",
         url: "https://www.softzone.es/app/uploads-softzone.es/2018/04/guest.png",
         main: true,
-        product: undefined
-    }
+        product: undefined,
+    };
 
     useEffect(() => {
         async function loadProductImage(productId: string) {
@@ -22,24 +22,25 @@ const getCartImageItem = ({ id }: ImageListProps) => {
             if (image && image.length > 0) {
                 setImage(image[0]);
             }
-            if (image?.length == 0 || image?.length == null){
-                setImage(initialValues)
+            if (image?.length == 0 || image?.length == null) {
+                setImage(initialValues);
             }
         }
         if (id) {
             loadProductImage(id);
-          }
+        }
     }, [id]);
 
     return (
         <div>
             {images && (
                 <img
-                src={images.url}
-                alt={images.title}
-                className="h-20 w-20 object-cover mt-4"/>
+                    src={images.url}
+                    alt={images.title}
+                    className="h-20 w-20 object-cover mt-4"
+                />
             )}
         </div>
     );
-}
+};
 export default getCartImageItem;
