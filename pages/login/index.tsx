@@ -22,7 +22,7 @@ const Login: FC<indexProps> = ({ }) => {
     <MainLayout title='Login'>
       <div className='h-full flex items-center justify-center'>
         <div className='bg-slate-200 p-[30px] flex flex-col gap-8  rounded-lg shadow-md m-20 w-full max-w-[400px]'>
-          <h1 className='text-center text-[35px] text-gray-800 font-semibold font-lato'>Login</h1>
+          <h1 className='text-center text-[35px] text-gray-800 font-semibold font-poppins'>Login</h1>
           <Formik
             initialValues={initialValues}
             validationSchema={loginFormValidations}
