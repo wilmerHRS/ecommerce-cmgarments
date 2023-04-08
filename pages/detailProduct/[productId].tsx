@@ -1,14 +1,10 @@
-import ImageList from "@/src/components/Product/ImageList";
-import DetailProductImage from "@/src/components/Product/DetailProductImages";
-import ProductDetailsContent from "@/src/components/Product/ProductDetailsContent";
-import { IImage } from "@/src/interfaces/image.interface";
+import DetailProductImage from "@/components/Product/DetailProductImages";
+import ProductDetailsContent from "@/components/Product/ProductDetailsContent";
+import { IImage } from "@/interfaces/image.interface";
 import {
     IGetProduct,
-    IGetSizes,
-    IProduct,
-    IProductSizes,
-} from "@/src/interfaces/product.interface";
-import { productService } from "@/src/services/product.service";
+} from "@/interfaces/product.interface";
+import { productService } from "@/services/product.service";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 

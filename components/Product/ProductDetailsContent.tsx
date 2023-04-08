@@ -1,9 +1,9 @@
-import { IGetProduct, IGetSizes } from "@/src/interfaces/product.interface";
-import { productService } from "@/src/services/product.service";
+import { IGetProduct, IGetSizes } from "@/interfaces/product.interface";
+import { productService } from "@/services/product.service";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import handleAddToCart from "../LocalStorage/addCartItem";
-import { USER } from "../user";
+import handleAddToCart from "@/utils/addCartItem";
+import { USER } from "../../constants/user";
 
 type ObjProduct = {
     product: IGetProduct | null;

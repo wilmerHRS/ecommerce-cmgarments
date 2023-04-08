@@ -1,11 +1,11 @@
-import { IImage } from "@/src/interfaces/image.interface";
-import { productService } from "@/src/services/product.service";
+import { IImage } from "@/interfaces/image.interface";
+import { productService } from "@/services/product.service";
 import { useEffect, useState } from "react";
 
 type ImageListProps = {
     id: string | null;
 };
-const getCartImageItem = ({ id }: ImageListProps) => {
+const GetCartImageItem = ({ id }: ImageListProps) => {
     const [images, setImage] = useState<IImage | null>(null);
 
     const initialValues: IImage = {
@@ -43,4 +43,4 @@ const getCartImageItem = ({ id }: ImageListProps) => {
         </div>
     );
 };
-export default getCartImageItem;
+export default GetCartImageItem;

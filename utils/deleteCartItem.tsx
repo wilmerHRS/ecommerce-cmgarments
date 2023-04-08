@@ -1,8 +1,4 @@
-import { IGetProduct } from "@/src/interfaces/product.interface";
-import { useEffect, useState } from "react";
-import { USER } from "../user";
-import getCartItems from "./getCartItem";
-import { useRouter } from "next/router";
+import { USER } from "@/constants/user";
 
 const deleteCartItem = (
     id: string,
