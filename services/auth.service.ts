@@ -1,5 +1,6 @@
 import ApiBase from "@/config/axios.config"
 import { CustomerResponseDto } from "@/interfaces/customer.interface"
+import { LoginForm } from "@/interfaces/login.interface"
 import { RegisterForm } from "@/interfaces/register.interface"
 import { AxiosResponse } from "axios"
 
@@ -14,7 +15,13 @@ const register = async (customer: RegisterForm) => {
   return response.data
 }
 
+const login = async (loginForm: LoginForm) => {
+  const response:AxiosResponse<CustomerResponseDto> = await ApiBase.post('/auth/login',loginForm);
+  return response.data
+}
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  register
+  register,
+  login
 }
