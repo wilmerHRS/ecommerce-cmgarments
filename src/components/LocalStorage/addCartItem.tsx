@@ -20,6 +20,8 @@ const handleAddToCart = (
     if (existingProductIndex > -1) {
         // Si el producto ya está en el carrito, actualizar la cantidad.
         cart[existingProductIndex].quantity = quantity;
+        cart[existingProductIndex].product = product?.data;
+        
     } else {
         // Si no, agregar el producto al carrito con la cantidad seleccionada.
         cart.push({
