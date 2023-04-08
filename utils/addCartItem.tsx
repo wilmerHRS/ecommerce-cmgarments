@@ -1,4 +1,4 @@
-import { IGetProduct } from "@/src/interfaces/product.interface";
+import { IGetProduct } from "@/interfaces/product.interface";
 
 const handleAddToCart = (
     user: string,

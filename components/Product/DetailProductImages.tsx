@@ -1,4 +1,4 @@
-import { IImage } from "@/src/interfaces/image.interface";
+import { IImage } from "@/interfaces/image.interface";
 import React, { useEffect, useState } from "react";
 import ImageList from "./ImageList";
 import Breadcrumbs from "./Breadcrumbs";

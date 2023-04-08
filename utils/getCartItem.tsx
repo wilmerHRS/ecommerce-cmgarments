@@ -1,4 +1,3 @@
-import { productService } from "@/src/services/product.service";
 
 const getCartItems = (user: any) => {
     const cartKey = `cart_${user}`;

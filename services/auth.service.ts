@@ -1,4 +1,4 @@
-import ApiBase from "@/components/config/axios.config"
+import ApiBase from "@/config/axios.config"
 import { CustomerResponseDto } from "@/interfaces/customer.interface"
 import { RegisterForm } from "@/interfaces/register.interface"
 import { AxiosResponse } from "axios"

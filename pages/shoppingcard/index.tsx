@@ -1,11 +1,8 @@
-import TitleShoppingCard from "@/src/components/ShoppingCard/TitleShoppingCards";
-import deleteCartItem from "@/src/components/LocalStorage/deleteCartItem";
-import GetCartImageItem from "@/src/components/LocalStorage/getCartImageItem";
-import getCartItems from "@/src/components/LocalStorage/getCartItem";
-import { USER } from "@/src/components/user";
-import { IImage } from "@/src/interfaces/image.interface";
-import { productService } from "@/src/services/product.service";
-import Link from "next/link";
+import TitleShoppingCard from "@/components/ShoppingCard/TitleShoppingCards";
+import deleteCartItem from "@/utils/deleteCartItem";
+import GetCartImageItem from "@/components/LocalStorage/getCartImageItem";
+import getCartItems from "@/utils/getCartItem";
+import { USER } from "@/constants/user";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 const ShoppingCard = () => {
