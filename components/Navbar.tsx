@@ -16,6 +16,7 @@ const Navbar: FC<NavbarProps> = ({ }) => {
             <li><Link className={`nav-link ${pathname === '/' ? 'active-link' : ''}`} href={'/'}>Home</Link></li>
             <li><Link className={`nav-link ${pathname === '/login' ? 'active-link' : ''}`} href={'/login'}>Login</Link></li>
             <li><Link className={`nav-link ${pathname === '/register' ? 'active-link' : ''}`} href={'/register'}>Register</Link></li>
+            <li><Link className={`nav-link ${pathname === '/shoppingcard' ? 'active-link' : ''}`} href={'/shoppingcard'}>Carrito</Link></li>
           </ul>
         </div>
         <div className='flex items-center gap-2'>
