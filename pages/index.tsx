@@ -51,7 +51,7 @@ const Home: FC<Props> = ({ categories, products, weekProduct, weekProductImage }
             {
               products.map((product, index) => {
                 return (
-                  <ProductCard key={index} product={product} />
+                  <ProductCard key={index} product={product}/>
                 )
               })
             }

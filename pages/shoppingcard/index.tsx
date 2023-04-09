@@ -30,7 +30,18 @@ const ShoppingCard = () => {
     const handleDeleteCartItem = (id: string) => {
         deleteCartItem(USER, id, cartItems, setCartItems, router);
         setShouldUpdateTotal(!shouldUpdateTotal);
+
+        const user = USER;
+        const updatedCartItems = getCartItems(user);
+        setTotal(calculateTotal(updatedCartItems));
     };
+
+    const calculateTotal = (cartItems: any) => {
+        return cartItems.reduce((acc: any, item: any) => {
+            return acc + item.quantity * item.product.price;
+        }, 0);
+    };
+    
 
     useEffect(() => {
         if (isLoaded) {
@@ -42,7 +53,6 @@ const ShoppingCard = () => {
                 return acc + item.quantity * item.product.price;
             }, 0);
             setTotal(totalPrice);
-            console.log(totalPrice);
             setLoading(false);
         }
     }, [isLoaded, customer, USER]);

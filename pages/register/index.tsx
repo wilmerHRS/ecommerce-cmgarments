@@ -34,7 +34,6 @@ const Register: FC<indexProps> = ({ }) => {
             validationSchema={registerFormValidations}
             onSubmit={
               async (values, helpers) => {
-                console.log(values)
                 authService.register(values)
                   .then((res) => {
                     helpers.resetForm()

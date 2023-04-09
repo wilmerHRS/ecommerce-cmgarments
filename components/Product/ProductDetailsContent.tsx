@@ -66,14 +66,7 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
     };
 
     const addToCart = () => {
-        const currentPath = router.asPath;
-        const newPath = `/shoppingcard`;
-
-        if (currentPath !== newPath) {
-            router.push(newPath);
-        }
-
-        handleAddToCart(USER, product, quantity);
+        handleAddToCart(USER, product?.id_product+"", quantity, router);
     };
 
     useEffect(() => {
@@ -205,7 +198,7 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
                                 />
                                 <ul className="mt-10">
                                     <li>
-                                        <span>SKU:</span> {product?.sku}
+                                        <span>SKU:</span> {product?.sku.toUpperCase()}
                                     </li>
                                     <li>
                                         <span>Categoría:</span>{" "}
