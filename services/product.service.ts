@@ -27,11 +27,11 @@ const getProductidSize = async (id: string, size: string): Promise<IProduct> => 
   return response.data;
 };
 
-  const productService = {
-    getImages,
-    getProductid,
-    getProductidSize,
-    getSizes,
-  };
-  
-  export { productService };
+const productService = {
+  getImages,
+  getProductid,
+  getProductidSize,
+  getSizes,
+};
+
+export { productService };
