@@ -23,7 +23,12 @@ const Navbar: FC<NavbarProps> = ({ }) => {
           <h1 className='text-4xl text-cyan-700 font-lato'>CMGarments</h1>
           <ul className='flex items-center gap-7'>
             <li><Link className={`nav-link ${pathname === '/' ? 'active-link' : ''}`} href={'/'}>Home</Link></li>
-            <li><Link className={`nav-link ${pathname === '/shoppingcard' ? 'active-link' : ''}`} href={'/shoppingcard'}>Carrito</Link></li>
+            {
+              !customer ?
+                <li><Link className={`nav-link ${pathname === '/login' ? 'active-link' : ''}`} href={'/login'}>Carrito</Link></li>
+                :
+                <li><Link className={`nav-link ${pathname === '/shoppingcard' ? 'active-link' : ''}`} href={'/shoppingcard'}>Carrito</Link></li>
+            }
           </ul>
         </div>
         {

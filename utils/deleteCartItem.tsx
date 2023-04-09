@@ -1,6 +1,7 @@
-import { USER } from "@/constants/user";
+import useAuth from "@/hooks/useAuth";
 
 const deleteCartItem = (
+    user: string,
     id: string,
     cartItems: any[],
     setCartItems: any,
@@ -12,7 +13,7 @@ const deleteCartItem = (
     );
 
     // Guardar el carrito actualizado en el localStorage.
-    const cartKey = `cart_${USER}`;
+    const cartKey = `cart_${user}`;
     localStorage.setItem(cartKey, JSON.stringify(updatedCartItems));
 
     // Actualizar el estado del carrito con los elementos actualizados.
