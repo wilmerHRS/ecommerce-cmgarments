@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import type { FC, ReactNode } from 'react';
 
@@ -6,6 +6,8 @@ interface MainLayoutProps {
   children: ReactNode
   title: string
 }
+
+const Navbar = dynamic(import('@/components/Navbar'), {ssr: false})
 
 const MainLayout: FC<MainLayoutProps> = ({ children, title }) => {
   return (
