@@ -1,11 +1,11 @@
-import { IGetProduct, IGetSizes } from "@/interfaces/product.interface";
+import { IGetProduct, IGetSizes, IProduct } from "@/interfaces/product.interface";
 import { productService } from "@/services/product.service";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import handleAddToCart from "@/utils/addCartItem";
 import useAuth from "@/hooks/useAuth";
 type ObjProduct = {
-    product: IGetProduct | null;
+    product: IProduct | null;
 };
 
 const ProductDetailsContent = ({ product }: ObjProduct) => {
@@ -43,7 +43,7 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
     const handleSizeClick = (size: string) => {
         setSelectedSize(size);
         if (size && product) {
-            loadSizeSelected(product.data.id_product + "", size);
+            loadSizeSelected(product.id_product + "", size);
         }
     };
     const handleSizeClickInit = (size: string) => {
@@ -53,7 +53,7 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
     const size = sizes?.data.relation_size;
 
     const handleQuantityChange = (value: number) => {
-        if (value >= 1 && value <= parseFloat(product?.data.stock + "")) {
+        if (value >= 1 && value <= parseFloat(product?.stock + "")) {
             setQuantity(value);
         }
     };
@@ -78,12 +78,12 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
 
     useEffect(() => {
         if (!selectedSize) {
-            handleSizeClickInit(product?.data.size + "");
+            handleSizeClickInit(product?.size + "");
         }
         if (scrollPosition === null) {
             setScrollPosition(window.pageYOffset);
         }
-        loadProductSize(product?.data.id_product + "");
+        loadProductSize(product?.id_product + "");
 
         if (cantidad) {
             var initCantidad = parseInt(cantidad + "");
@@ -108,15 +108,15 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
                     <div className="w-full lg:w-2/3">
                         <div className="py-10 text-center w-3/4 mx-auto">
                             <h4 className="text-2xl font-bold">
-                                {product?.data.name}
+                                {product?.name}
                             </h4>
                             <h3 className="text-3xl mt-5">
                                 $
                                 {parseFloat(
-                                    product?.data.price?.toString() + ""
+                                    product?.price?.toString() + ""
                                 )}
                             </h3>
-                            <p className="my-4">{product?.data.description}</p>
+                            <p className="my-4">{product?.description}</p>
                             {/* Añade tu componente de opciones de tamaño y color aquí */}
                             {/* Añade tu componente de opción de carrito aquí */}
                             <div className="flex mt-5 justify-center items-center">
@@ -155,7 +155,7 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
                                             className="w-12 text-center border border-gray-300 mx-2"
                                             value={quantity}
                                             min="1"
-                                            max={product?.data.stock + ""}
+                                            max={product?.stock + ""}
                                             onChange={(e) =>
                                                 handleQuantityChange(
                                                     parseInt(e.target.value)
@@ -205,15 +205,15 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
                                 />
                                 <ul className="mt-10">
                                     <li>
-                                        <span>SKU:</span> {product?.data.sku}
+                                        <span>SKU:</span> {product?.sku}
                                     </li>
                                     <li>
                                         <span>Categoría:</span>{" "}
-                                        {product?.data.category?.name}
+                                        {product?.category?.name}
                                     </li>
                                     <li>
                                         <span>Marca:</span>{" "}
-                                        {product?.data.brand?.name}
+                                        {product?.brand?.name}
                                     </li>
                                 </ul>
                             </div>
