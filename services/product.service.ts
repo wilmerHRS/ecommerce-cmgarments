@@ -20,8 +20,9 @@ const getSizes = async (id: string): Promise<IGetSizes> => {
 };
 
 //? obtener producto id
-const getProductid = async (id: string): Promise<IGetProduct> => {
-  return await ApiBase.get(`/product/${id}`);
+const getProductid = async (id: string): Promise<IProduct> => {
+  const response:AxiosResponse<IProduct> = await ApiBase.get(`/product/${id}`);
+  return response.data
 };
 
 //? obtener producto id X talla

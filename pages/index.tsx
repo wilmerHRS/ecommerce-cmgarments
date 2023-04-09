@@ -5,7 +5,7 @@ import MainLayout from "@/layouts/MainLayout";
 import categoryService from "@/services/category.service";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import dynamic from "next/dynamic";
-import { IRecentProduct } from '@/interfaces/product.interface';
+import { IGetProduct, IProduct, IRecentProduct } from '@/interfaces/product.interface';
 import { productService } from '@/services/product.service';
 import ProductCard from '@/components/Home/ProductCard';
 
@@ -14,9 +14,10 @@ const Carousel = dynamic(import('@/components/Home/Carousel'), { ssr: false })
 interface Props {
   categories: IPagination<IShortCategory[]>
   products: IRecentProduct[]
+  weekProduct: IProduct
 }
 
-const Home: FC<Props> = ({ categories, products }) => {
+const Home: FC<Props> = ({ categories, products, weekProduct }) => {
   return (
     <MainLayout title="Inicio">
       <div className='grid grid-flow-row gap-[70px]'>
@@ -49,6 +50,14 @@ const Home: FC<Props> = ({ categories, products }) => {
             }
           </div>
         </div>
+        <div className='bg-gray-200 h-[400px] p-10'>
+          <div>
+            <h1 className='text-4xl font-poppins text-slate-700'>Porducto de la semana</h1>
+            <div>
+              <h1>{weekProduct.name}</h1>
+            </div>
+          </div>
+        </div>
       </div>
     </MainLayout>
   );
@@ -58,10 +67,12 @@ export default Home;
 export const getServerSideProps: GetServerSideProps<Props> = async (context: GetServerSidePropsContext) => {
   const categories = await categoryService.getCategories(5, 1)
   const products = await productService.getRecentsProducts(9)
+  const weekProduct = await productService.getProductid('a47fe5cd-9378-4ff4-b569-25e82675a385')
   return {
     props: {
       categories,
-      products
+      products,
+      weekProduct
     }
   }
 }

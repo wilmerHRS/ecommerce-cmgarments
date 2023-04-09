@@ -2,7 +2,7 @@ import DetailProductImage from "@/components/Product/DetailProductImages";
 import ProductDetailsContent from "@/components/Product/ProductDetailsContent";
 import { IImage } from "@/interfaces/image.interface";
 import {
-    IGetProduct,
+    IGetProduct, IProduct,
 } from "@/interfaces/product.interface";
 import MainLayout from "@/layouts/MainLayout";
 import { productService } from "@/services/product.service";
@@ -13,7 +13,7 @@ const DetailProduct = () => {
     const router = useRouter();
     const productid = router.query.productId as string;
 
-    const [product, setProduct] = useState<IGetProduct | null>(null);
+    const [product, setProduct] = useState<IProduct | null>(null);
     const [image, setImage] = useState<IImage[] | null>(null);
 
     useEffect(() => {
