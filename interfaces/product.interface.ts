@@ -45,5 +45,6 @@ export interface IProduct {
 export interface IRecentProduct {
   id_product: string
   name: string
+  size: string
   images: IShortImage[]
 }

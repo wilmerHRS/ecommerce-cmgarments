@@ -17,7 +17,7 @@ interface Props {
   weekProduct: IProduct
 }
 
-const Home: FC<Props> = ({ categories, products, weekProduct }) => {
+const Home: FC<Props> = ({ categories, products, weekProduct}) => {
   return (
     <MainLayout title="Inicio">
       <div className='grid grid-flow-row gap-[70px]'>
@@ -44,7 +44,7 @@ const Home: FC<Props> = ({ categories, products, weekProduct }) => {
             {
               products.map((product, index) => {
                 return (
-                  <ProductCard key={index} product={product} />
+                  <ProductCard key={index} product={product}/>
                 )
               })
             }
@@ -68,13 +68,12 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context: Get
   const categories = await categoryService.getCategories(5, 1)
   const products = await productService.getRecentsProducts(9)
   const weekProduct = await productService.getProductid(process.env.WEEK_PRODUCT+"")
-  console.log(products)
   return {
     props: {
       categories,
       products,
       weekProduct
-    }
+        }
   }
 }
 
