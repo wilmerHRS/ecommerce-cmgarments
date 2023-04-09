@@ -1,4 +1,4 @@
-import { IGetProduct, IGetSizes, IProduct } from "@/interfaces/product.interface";
+import { IGetProduct, IGetSizes, IProduct, IProductSizes } from "@/interfaces/product.interface";
 import { productService } from "@/services/product.service";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -11,7 +11,7 @@ type ObjProduct = {
 const ProductDetailsContent = ({ product }: ObjProduct) => {
     const [quantity, setQuantity] = useState(1);
     const [selectedSize, setSelectedSize] = useState("");
-    const [sizes, setSizes] = useState<IGetSizes | null>(null);
+    const [sizes, setSizes] = useState<IProductSizes | null>(null);
     const router = useRouter();
     const { cantidad } = router.query;
     const [scrollPosition, setScrollPosition] = useState<number | null>(null);
@@ -29,7 +29,7 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
             size
         );
         const currentPath = router.asPath;
-        const newPath = `/detailProduct/${ProductSize.data.id_product + ""}`;
+        const newPath = `/detailProduct/${ProductSize.id_product + ""}`;
 
         if (currentPath !== newPath) {
             router.push(newPath);
@@ -50,7 +50,7 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
         setSelectedSize(size);
     };
 
-    const size = sizes?.data.relation_size;
+    const size = sizes?.relation_size;
 
     const handleQuantityChange = (value: number) => {
         if (value >= 1 && value <= parseFloat(product?.stock + "")) {
