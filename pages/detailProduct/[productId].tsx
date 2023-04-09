@@ -1,7 +1,7 @@
 import DetailProductImage from "@/components/Product/DetailProductImages";
 import ProductDetailsContent from "@/components/Product/ProductDetailsContent";
 import { IImage } from "@/interfaces/image.interface";
-import { IGetProduct } from "@/interfaces/product.interface";
+import { IProduct } from "@/interfaces/product.interface";
 import MainLayout from "@/layouts/MainLayout";
 import { productService } from "@/services/product.service";
 import { useRouter } from "next/router";
@@ -11,10 +11,9 @@ const DetailProduct = () => {
     const router = useRouter();
     const productid = router.query.productId as string;
 
-    const [product, setProduct] = useState<IGetProduct | null>(null);
+    const [product, setProduct] = useState<IProduct | null>(null);
     const [image, setImage] = useState<IImage[] | null>(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [isLoaded2, setIsLoaded2] = useState(false);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -23,7 +22,6 @@ const DetailProduct = () => {
                 loadProduct(productid), loadProductImage(productid);
                 setLoading(false);
             }
-            setIsLoaded2(true)
         }
     }, [isLoaded, productid]);
 
