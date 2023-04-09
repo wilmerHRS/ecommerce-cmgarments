@@ -50,7 +50,7 @@ const Register: FC<indexProps> = ({ }) => {
                     helpers.setSubmitting(false)
                     Swal.fire({
                       icon: 'error',
-                      title: 'Hubo un error al registrar, compruebe que se ingresaron los datos correctamente',
+                      title: err.response?.data.message,
                       showConfirmButton: false,
                       timer: 2500
                     })

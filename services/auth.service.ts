@@ -1,6 +1,6 @@
 import ApiBase from "@/config/axios.config"
 import { CustomerResponseDto } from "@/interfaces/customer.interface"
-import { LoginForm } from "@/interfaces/login.interface"
+import { LoginApiResponse, LoginForm } from "@/interfaces/login.interface"
 import { RegisterForm } from "@/interfaces/register.interface"
 import { AxiosResponse } from "axios"
 
@@ -16,7 +16,7 @@ const register = async (customer: RegisterForm) => {
 }
 
 const login = async (loginForm: LoginForm) => {
-  const response:AxiosResponse<CustomerResponseDto> = await ApiBase.post('/auth/login',loginForm);
+  const response:AxiosResponse<LoginApiResponse> = await ApiBase.post('/auth/login',loginForm);
   return response.data
 }
 
