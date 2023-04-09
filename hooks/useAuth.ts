@@ -1,12 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { LoginApiResponse } from '@/interfaces/login.interface';
 import { useAuthStore } from '@/store/auth.store';
+import { time } from 'console';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { shallow } from "zustand/shallow";
 
 const useAuth = () => {
 
   const { token, customer, setToken, setCustomer, clearAuthStore } = useAuthStore((state) => state, shallow)
+  const router = useRouter();
 
   /**
    * Guarda los datos de logeo en el localstorage
@@ -44,8 +47,11 @@ const useAuth = () => {
    * Cierra la sesión del usuario seteando en null los datos del usuario en el estado
    */
   const authLogout = () => {
-    clearAuthStore()
-    removeLoginDataFromLocalStorage()
+    router.push("/login")
+    setTimeout(() => {
+      clearAuthStore()
+      removeLoginDataFromLocalStorage()
+    }, 100)
   }
 
   useEffect(() => {

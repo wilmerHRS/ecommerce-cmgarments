@@ -3,8 +3,7 @@ import { productService } from "@/services/product.service";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import handleAddToCart from "@/utils/addCartItem";
-import { USER } from "../../constants/user";
-
+import useAuth from "@/hooks/useAuth";
 type ObjProduct = {
     product: IGetProduct | null;
 };
@@ -16,6 +15,8 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
     const router = useRouter();
     const { cantidad } = router.query;
     const [scrollPosition, setScrollPosition] = useState<number | null>(null);
+    const { customer } = useAuth();
+    const USER = customer?.names + "";
 
     async function loadProductSize(productId: string) {
         const sizes = await productService.getSizes(productId);
@@ -34,6 +35,11 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
             router.push(newPath);
         }
     }
+
+    async function irLogin() {
+        router.push("/login");
+    }
+
     const handleSizeClick = (size: string) => {
         setSelectedSize(size);
         if (size && product) {
@@ -169,12 +175,21 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
                                             +
                                         </button>
                                     </div>
-                                    <button
-                                        onClick={addToCart}
-                                        className="bg-black text-white px-6 py-3 font-bold"
-                                    >
-                                        AÑADIR AL CARRITO
-                                    </button>
+                                    {!customer ? (
+                                        <button
+                                            onClick={irLogin}
+                                            className="bg-black text-white px-6 py-3 font-bold"
+                                        >
+                                            AÑADIR AL CARRITO
+                                        </button>
+                                    ) : (
+                                        <button
+                                            onClick={addToCart}
+                                            className="bg-black text-white px-6 py-3 font-bold"
+                                        >
+                                            AÑADIR AL CARRITO
+                                        </button>
+                                    )}
                                 </div>
                                 <div className="flex items-center mt-16">
                                     <hr className="border border-gray-400 w-16 mx-2" />
