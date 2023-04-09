@@ -7,3 +7,10 @@ export interface ICategory {
   createdAt?: string;
   products: IProduct[];
 }
+
+export interface IShortCategory {
+  id_category?: string;
+  name: string;
+  sizes: string;
+  createdAt?: string;
+}

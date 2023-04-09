@@ -17,7 +17,7 @@ const Navbar: FC<NavbarProps> = ({ }) => {
   const { customer, authLogout } = useAuth()
 
   return (
-    <div className='flex justify-center w-full bg-white items-center h-20 shadow-md'>
+    <div className='flex justify-center w-full bg-white items-center h-20 shadow-md z-30'>
       <nav className='max-w-[1280px] flex justify-between w-full px-2'>
         <div className='flex items-center gap-[50px]'>
           <h1 className='text-4xl text-cyan-700 font-lato'>CMGarments</h1>
