@@ -19,7 +19,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
   return (
     <div className='bg-gray-800 h-[350px] overflow-hidden rounded-md shadow-md'>
       <div className='w-[250px] h-[250px] relative bg-gray-300'>
-        <Image src={product.images[0].url} fill alt={product.images[0].title} className='object-cover' />
+        <Image src={product.images[0]?product.images[0].url:process.env.NEXT_PUBLIC_DEAFAULT_PRODUCT_IMAGE+""} fill alt={product.images[0]?product.images[0].title:"DEFAULTIMAGE.png"} className='object-cover' />
       </div>
       <div className='flex flex-col gap-2 p-3'>
         <h1 className='text-white text-xl truncate max-w-[220px]'>{product.name}</h1>

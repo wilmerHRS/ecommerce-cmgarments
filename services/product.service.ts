@@ -1,7 +1,17 @@
 import ApiBase from "@/config/axios.config";
 import { IImage } from "../interfaces/image.interface";
-import { IGetProduct, IGetSizes, IProduct, IProductSizes } from "../interfaces/product.interface";
+import { IGetProduct, IGetSizes, IProduct, IProductSizes, IRecentProduct } from "../interfaces/product.interface";
 import { AxiosResponse } from "axios";
+
+/**
+ * Obteniendo los productos reciente mente registrados
+ * @param quantity Number
+ * @returns IRecentProducts
+ */
+const getRecentsProducts = async (quantity: number): Promise<IRecentProduct[]> => {
+  const response: AxiosResponse<IRecentProduct[]> = await ApiBase.get(`/product/recents/items?quantity=${quantity}`)
+  return response.data
+}
 
 //? Obtener imagenes por ID de PRODUCTO
 const getImages = async (id: string): Promise<IImage[]> => {
@@ -32,6 +42,7 @@ const productService = {
   getProductid,
   getProductidSize,
   getSizes,
+  getRecentsProducts,
 };
 
 export { productService };

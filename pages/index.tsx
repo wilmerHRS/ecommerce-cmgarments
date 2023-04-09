@@ -67,7 +67,8 @@ export default Home;
 export const getServerSideProps: GetServerSideProps<Props> = async (context: GetServerSidePropsContext) => {
   const categories = await categoryService.getCategories(5, 1)
   const products = await productService.getRecentsProducts(9)
-  const weekProduct = await productService.getProductid('a47fe5cd-9378-4ff4-b569-25e82675a385')
+  const weekProduct = await productService.getProductid(process.env.WEEK_PRODUCT+"")
+  console.log(products)
   return {
     props: {
       categories,
