@@ -198,7 +198,7 @@ const ProductDetailsContent = ({ product }: ObjProduct) => {
                                 />
                                 <ul className="mt-10">
                                     <li>
-                                        <span>SKU:</span> {product?.sku}
+                                        <span>SKU:</span> {product?.sku.toUpperCase()}
                                     </li>
                                     <li>
                                         <span>Categoría:</span>{" "}
