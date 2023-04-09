@@ -24,7 +24,7 @@ const Carousel: FC<CarouselProps> = ({ }) => {
       onBeforeInit={(swiper) => {
         swiperRef.current = swiper
       }}
-      className='relative'
+      className='relative max-w-[1280px]'
       slidesPerView={'auto'}
     >
       <SwiperSlide>
