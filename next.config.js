@@ -4,7 +4,8 @@ const nextConfig = {
   images: {
     domains: [
       'res.cloudinary.com',
-      'www.softzone.es'
+      'www.softzone.es',
+      'aeroclub-issoire.fr'
     ]
   }
 }

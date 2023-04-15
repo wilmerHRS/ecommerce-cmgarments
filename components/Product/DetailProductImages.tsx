@@ -10,7 +10,7 @@ type ImageListProps = {
 const initialValues: IImage = {
     id_image: "default",
     title: "DEFAULT",
-    url: "https://www.softzone.es/app/uploads-softzone.es/2018/04/guest.png",
+    url: process.env.NEXT_PUBLIC_DEAFAULT_PRODUCT_IMAGE + "",
     main: true,
     product: undefined,
 };
