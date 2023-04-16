@@ -1,21 +1,18 @@
-import useAuth from "@/hooks/useAuth";
-
-const deleteCartItem = (
+const deleteAllCartItems = (
     user: string,
-    id: string,
     cartItems: any[],
     setCartItems: any,
     router: any,
     cartItemsSend?: any[],
     setCartItemsSend?: any,
 ) => {
-    // Crear un nuevo array sin el elemento a eliminar basándote en su ID.
+    // Crear un nuevo array sin los elementos que tienen state igual a true.
     const updatedCartItems = cartItems.filter(
-        (item: any) => item.product.id_product + "" !== id + ""
+        (item: any) => item.state !== true
     );
     if(cartItemsSend){
         const updatedCartItemsSend = cartItemsSend.filter(
-            (item: any) => item.product_id + "" !== id + ""
+            (item: any) => item.state !== true
         );
 
         // Guardar el send actualizado en el localStorage.
@@ -37,4 +34,4 @@ const deleteCartItem = (
     const newPath = `/shoppingcard`;
     router.push(newPath);
 };
-export default deleteCartItem;
+export default deleteAllCartItems;

@@ -28,7 +28,9 @@ const DetailProduct = () => {
     async function loadProduct(productId: string) {
         try {
             const product = await productService.getProductid(productId);
-            setProduct(product);
+            if(product.state){
+                setProduct(product);
+            }
             
         } catch (err) {}
     }

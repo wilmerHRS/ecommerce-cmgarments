@@ -44,6 +44,11 @@ const Home: FC<Props> = ({
         handleAddToCart(USER, weekProduct.id_product + "", null, router);
     };
 
+    const deletelocalstorage = () => {
+        localStorage.clear();
+    };
+
+
     return (
         <MainLayout title="Inicio">
             <div className="grid grid-flow-row gap-[70px] max-w-[1280px]">
@@ -144,7 +149,7 @@ const Home: FC<Props> = ({
                                 weekProductImage[0]
                                     ? weekProductImage[0].url
                                     : process.env
-                                    .NEXT_PUBLIC_DEAFAULT_PRODUCT_IMAGE +
+                                        .NEXT_PUBLIC_DEAFAULT_PRODUCT_IMAGE +
                                     ""
                             }
                             fill

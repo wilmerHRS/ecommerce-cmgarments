@@ -9,7 +9,6 @@ import { shallow } from "zustand/shallow";
 const useAuth = () => {
 
   const { token, customer, setToken, setCustomer, clearAuthStore } = useAuthStore((state) => state, shallow)
-  const router = useRouter();
 
   /**
    * Guarda los datos de logeo en el localstorage
@@ -47,11 +46,8 @@ const useAuth = () => {
    * Cierra la sesión del usuario seteando en null los datos del usuario en el estado
    */
   const authLogout = () => {
-    router.push("/login")
-    setTimeout(() => {
-      clearAuthStore()
-      removeLoginDataFromLocalStorage()
-    }, 100)
+    clearAuthStore()
+    removeLoginDataFromLocalStorage()
   }
 
   useEffect(() => {

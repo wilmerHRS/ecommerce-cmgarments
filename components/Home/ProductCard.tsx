@@ -36,7 +36,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
                         product.images[0]
                             ? product.images[0].url
                             : process.env.NEXT_PUBLIC_DEAFAULT_PRODUCT_IMAGE +
-                              ""
+                            ""
                     }
                     fill
                     alt={
