@@ -44,6 +44,11 @@ const Home: FC<Props> = ({
         handleAddToCart(USER, weekProduct.id_product + "", null, router);
     };
 
+    const deletelocalstorage = () => {
+        localStorage.clear();
+    };
+
+
     return (
         <MainLayout title="Inicio">
             <div className="grid grid-flow-row gap-[70px] max-w-[1280px]">
@@ -141,8 +146,11 @@ const Home: FC<Props> = ({
                     <div className="bg-gray-400 w-[400px] h-[400px] relative rounded-xl overflow-hidden">
                         <Image
                             src={
-                                weekProductImage[0].url ??
-                                process.env.NEXT_PUBLIC_DEFAULT_IMAGE + ""
+                                weekProductImage[0]
+                                    ? weekProductImage[0].url
+                                    : process.env
+                                        .NEXT_PUBLIC_DEAFAULT_PRODUCT_IMAGE +
+                                    ""
                             }
                             fill
                             alt="imagen_producto_semanal.png"
@@ -167,7 +175,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     const weekProductImage = await imageService.getProductImage(
         process.env.WEEK_PRODUCT + ""
     );
-    console.log(weekProductImage);
     return {
         props: {
             categories,

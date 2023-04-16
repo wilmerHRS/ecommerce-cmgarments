@@ -31,6 +31,7 @@ const DetailProduct = () => {
             if(product.state){
                 setProduct(product);
             }
+            
         } catch (err) {}
     }
 

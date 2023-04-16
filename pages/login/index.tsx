@@ -61,7 +61,7 @@ const Login: FC<indexProps> = ({ }) => {
                   <div className='flex flex-col gap-8'>
                     <div className='grid grid-rows-2 w-full gap-5'>
                       <Input label='Email' name='email' type='text' maxLength={50} autoComplete='off' />
-                      <Input label='Password' name='password' type='password' maxLength={20} autoComplete='off' />
+                      <Input label='Contraseña' name='password' type='password' maxLength={20} autoComplete='off' />
                     </div>
                     <div className='flex'>
                       <button type='submit' className='bg-blue-600 bg-opacity-90 hover:bg-opacity-100 h-11 rounded-sm text-white text-[17px] flex justify-center items-center disabled:saturate-50 w-full' disabled={isSubmitting}>
