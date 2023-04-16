@@ -15,6 +15,7 @@ import handleAddToCart from "@/utils/addCartItem";
 import getCartSendItems from "@/utils/getCartSendItem";
 import { ICartItem, ISaleC } from "@/interfaces/sale.interface";
 import { SaleService } from "@/services/sale.service";
+import imagen from "../../images/pagar.png";
 import deleteAllCartItem from "@/utils/deleteAllCart";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -55,6 +56,10 @@ const ShoppingCard = () => {
     const handlePay = (e: any) => {
         //console.log("se ejecuta");
         setIsPay(true);
+    };
+
+    const handleCancelPay = () => {
+        setIsPay(false);
     };
 
     const handlecreateOrder = async () => {
@@ -184,6 +189,8 @@ const ShoppingCard = () => {
         setCartItems,
         total,
         setTotal,
+        setIsPay,
+        isPay,
     ]);
 
     return (
@@ -216,7 +223,7 @@ const ShoppingCard = () => {
                                                     en el carrito
                                                 </h2>
                                             </div>
-                                        ) : (                            
+                                        ) : (
                                             <table className="table-fixed w-full">
                                                 <thead>
                                                     <tr className="bg-white">
@@ -244,11 +251,13 @@ const ShoppingCard = () => {
                                                                 key={index}
                                                                 className={`border-t border-b border-gray-300`}
                                                             >
-                                                                <td className={`px-4 py-3 flex justify-center items-center ${
-                                                                    item.state
-                                                                        ? ""
-                                                                        : "opacity-30"
-                                                                }`}>
+                                                                <td
+                                                                    className={`px-4 py-3 flex justify-center items-center ${
+                                                                        item.state
+                                                                            ? ""
+                                                                            : "opacity-30"
+                                                                    }`}
+                                                                >
                                                                     <GetCartImageItem
                                                                         id={
                                                                             item
@@ -286,27 +295,35 @@ const ShoppingCard = () => {
                                                                         </li>
                                                                     </ul>
                                                                 </td>
-                                                                <td className={`px-4 py-2 ${
-                                                                    item.state
-                                                                        ? ""
-                                                                        : "opacity-30"
-                                                                }`}>
+                                                                <td
+                                                                    className={`px-4 py-2 ${
+                                                                        item.state
+                                                                            ? ""
+                                                                            : "opacity-30"
+                                                                    }`}
+                                                                >
                                                                     {
                                                                         item.quantity
                                                                     }
                                                                 </td>
-                                                                <td className={`px-4 py-2 font-bold ${
-                                                                    item.state
-                                                                        ? ""
-                                                                        : "opacity-30"
-                                                                }`}>
+                                                                <td
+                                                                    className={`px-4 py-2 font-bold ${
+                                                                        item.state
+                                                                            ? ""
+                                                                            : "opacity-30"
+                                                                    }`}
+                                                                >
                                                                     $
                                                                     {item
                                                                         .product
                                                                         .price *
                                                                         item.quantity}
                                                                 </td>
-                                                                <td className={"px-4 py-2"}>
+                                                                <td
+                                                                    className={
+                                                                        "px-4 py-2"
+                                                                    }
+                                                                >
                                                                     <button
                                                                         onClick={() =>
                                                                             goProduct(
@@ -374,7 +391,6 @@ const ShoppingCard = () => {
                                                     )}
                                                 </tbody>
                                             </table>
-                                            
                                         )}
                                     </div>
 
@@ -400,7 +416,7 @@ const ShoppingCard = () => {
                                                     ${total}
                                                 </span>
                                             </div>
-                                            <input
+                                            <button
                                                 className={`${
                                                     cartItems.length === 0 ||
                                                     areAllItemsDisabled()
@@ -408,31 +424,52 @@ const ShoppingCard = () => {
                                                         : "bg-black"
                                                 } ${
                                                     isPay ? "hidden" : ""
-                                                } text-white w-full py-3 rounded-md`}
-                                                type="button"
+                                                } text-white w-full py-3 rounded-md flex items-center justify-center`}
                                                 onClick={handlePay}
-                                                value="Pagar con Paypal"
                                                 disabled={
                                                     cartItems.length === 0 ||
                                                     areAllItemsDisabled()
                                                 }
-                                            />
-                                            {isPay ? (
-                                                <ButtonPaypal
-                                                    handlecreateOrder={
-                                                        handlecreateOrder
+                                            >
+                                                <img
+                                                    src={
+                                                        "https://cdn-icons-png.flaticon.com/512/1571/1571065.png"
                                                     }
-                                                    areAllItemsDisabled={
-                                                        areAllItemsDisabled
-                                                    }
-                                                    cartItems={cartItems}
-                                                    handleOnAprove={
-                                                        handleOnAprove
-                                                    }
-                                                    handleOnCancel={
-                                                        handleOnCancel
-                                                    }
+                                                    className="w-1/4 h-auto opacity-100 cv"
                                                 />
+                                            </button>
+
+                                            {isPay ? (
+                                                <div>
+                                                    <ButtonPaypal
+                                                        handlecreateOrder={
+                                                            handlecreateOrder
+                                                        }
+                                                        areAllItemsDisabled={
+                                                            areAllItemsDisabled
+                                                        }
+                                                        cartItems={cartItems}
+                                                        handleOnAprove={
+                                                            handleOnAprove
+                                                        }
+                                                        handleOnCancel={
+                                                            handleOnCancel
+                                                        }
+                                                    />
+                                                    <button
+                                                        className={`bg-red-500 text-white w-full py-3 rounded-md flex items-center justify-center`}
+                                                        onClick={
+                                                            handleCancelPay
+                                                        }
+                                                    >
+                                                        <img
+                                                            src={
+                                                                "   https://cdn-icons-png.flaticon.com/512/545/545676.png "
+                                                            }
+                                                            className="w-auto h-6"
+                                                        />
+                                                    </button>
+                                                </div>
                                             ) : null}
                                         </div>
                                     </div>
