@@ -49,7 +49,8 @@ const ShoppingCard = () => {
         const updatedCartItemsSend = getCartSendItems(user);
         setCartItems(updatedCartItems);
         setCartItemsSend(updatedCartItemsSend);
-        setTotal(calculateTotal(updatedCartItems));
+        const total = calculateTotal(updatedCartItems).toFixed(2);
+        setTotal(total);
     };
 
     // majeado de pago
@@ -314,10 +315,10 @@ const ShoppingCard = () => {
                                                                     }`}
                                                                 >
                                                                     $
-                                                                    {item
+                                                                    {(item
                                                                         .product
                                                                         .price *
-                                                                        item.quantity}
+                                                                        item.quantity).toFixed(2)}
                                                                 </td>
                                                                 <td
                                                                     className={
