@@ -11,6 +11,8 @@ const DetailProduct = () => {
     const router = useRouter();
     const productid = router.query.productId as string;
 
+    console.log(productid)
+
     const [product, setProduct] = useState<IProduct | null>(null);
     const [image, setImage] = useState<IImage[] | null>(null);
     const [isLoaded, setIsLoaded] = useState(false);
